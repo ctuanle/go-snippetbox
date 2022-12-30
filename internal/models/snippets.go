@@ -7,8 +7,8 @@ import (
 )
 
 type Snippet struct {
-	ID int
-	Title string
+	ID      int
+	Title   string
 	Content string
 	Created time.Time
 	Expires time.Time
@@ -31,7 +31,7 @@ func (m *SnippetModel) Insert(title string, content string, expires int) (int, e
 	if err != nil {
 		return 0, nil
 	}
-	
+
 	return int(id), nil
 }
 
