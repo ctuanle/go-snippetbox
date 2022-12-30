@@ -28,7 +28,8 @@ INSERT INTO snippets (title, content, created, expires) VALUES (
   DATE_ADD(UTC_TIMESTAMP(), INTERVAL 365 DAY)
 );
 
-INSERT INTO snippets (title, content, created, expires) VALUES (
+INSERT IN
+TO snippets (title, content, created, expires) VALUES (
   'First autumn morning',
   'First autumn morning\nthe mirror I stare into\nshows my father''s face.\n\n– Murakami Kijo',
   UTC_TIMESTAMP(),
@@ -39,3 +40,9 @@ CREATE USER 'web'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON snippetbox.* TO 'web'@'localhost';
 -- Important: Make sure to swap 'pass' with a password of your own choosing.
 ALTER USER 'web'@'localhost' IDENTIFIED BY 'azerty';
+
+CREATE TABLE sessions (
+  token CHAR(43) PRIMARY KEY,
+  data BLOB NOT NULL,
+  expiry TIMESTAMP(6) NOT NULL
+);
